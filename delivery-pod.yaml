@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: delivery-pod
+spec:
+ containers:
+  - name: delivery
+    image: josegabjimenez/forkfiesta-delivery
+    ports:
+     - containerPort: 5002
+ initContainers:
+  - name: init-container
+    image: busybox
+    command: ['sh', '-c', 'until nslookup api-gateway-service; do sleep 2; done']

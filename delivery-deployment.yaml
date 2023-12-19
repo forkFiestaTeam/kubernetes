@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: delivery
+spec:
+ replicas: 1
+ selector:
+  matchLabels:
+   app: delivery
+ template:
+  metadata:
+   labels:
+    app: delivery
+  spec:
+   containers:
+    - name: delivery
+      image: josegabjimenez/forkfiesta-delivery
+      ports:
+       - containerPort: 5002
+      env:
+       - name: API_GATEWAY_URL
+         value: http://api-gateway-service.default.svc.cluster.local:3001
