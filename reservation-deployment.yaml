@@ -14,6 +14,6 @@ spec:
   spec:
    containers:
     - name: reservation
-      image: josegabjimenez/forkfiesta-reservation
+      image: juanes165/forkfiesta-reservation
       ports:
        - containerPort: 5001
